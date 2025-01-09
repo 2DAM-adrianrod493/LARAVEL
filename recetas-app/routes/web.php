@@ -1,18 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecetaController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+// Ruta Principal
 Route::get('/', function () {
-    return "BIENVENIDO A LA PÁGINA HOME";
+    return "Bienvenido A La Página Home";
+});
+
+// Rutas de Recetas con un Controlador Dedicado
+Route::prefix('recetas')->name('recetas.')->group(function () {
+    // Página Principal de Recetas
+    Route::get('/', function () {
+        return "Bienvenido A Mi Recetario";
+    })->name('index');
+
+    // Página para Crear una Receta
+    Route::get('create', function () {
+        return "Sección para Crear Recetas";
+    })->name('create');
+
+    // Mostrar recetas por categoría y receta (opcional)
+    Route::get('{categoria}/{receta?}', function ($categoria, $receta = null) {
+        if ($receta === null) {
+            return "Recetas de las categorías: $categoria";
+        } else {
+            return "Categoría $categoria: Detalle de la receta $receta";
+        }
+    })->name('show');
 });
