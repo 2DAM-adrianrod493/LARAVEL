@@ -1,15 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecetaController;
-use App\Http\Controllers\HomeController;
 
-// Ruta Principal
-Route::get('/', HomeController::class);
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-// Rutas RecetaController
-Route::controller(RecetaController::class)->group(function () {
-    Route::get('recetas', 'index');
-    Route::get('recetas/create', 'create');
-    Route::get('recetas/{receta}/{categoria?}', 'show');
+Route::get('/', function () {
+    return view('welcome');
 });
