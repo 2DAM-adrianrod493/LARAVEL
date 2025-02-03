@@ -25,12 +25,13 @@
                 <img src="{{ asset('storage/images/logo.png') }}" class="img-fluid logo me-2" alt="Logo IES">
             <p class="display-6 text-light">Recetario App</p>
             </div>
-            
+           
         </div>
         <div class="col-6">
-
             <div class="d-flex align-items-center justify-content-end">
-          
+                <a href="@yield('buttonBack')" class="btn btn-dark">
+                    @yield('buttonBackText')
+                </a></div>          
         </div>
     </header>
     <!-- Menú Nav -->
