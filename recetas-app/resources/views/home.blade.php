@@ -13,7 +13,7 @@
     <style>
         body {
             background-image: url('/storage/images/fondo.jpg');
-            background-position: center;
+            background-position: auto;
             background-size: cover;
             background-repeat: no-repeat;                      
             text-align: center;

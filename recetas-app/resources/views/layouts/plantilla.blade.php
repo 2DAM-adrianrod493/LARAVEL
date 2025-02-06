@@ -12,9 +12,15 @@
 
     <style>
         .logo{
-             width: 4rem;
-             height: 4rem;
-         }        
+             width: 5rem;
+             height: 5rem;
+         }    
+
+        .head {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
      </style>
 </head>
 

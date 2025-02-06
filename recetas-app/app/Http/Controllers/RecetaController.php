@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Categoria;
+
+use App\Models\Receta;
+
 class RecetaController extends Controller
 {
-    public function index()
+    public function index(Categoria $categoria)
     {
-        return 'Bienvenido a las Recetas';
+        $recetas = $categoria->recetas()->get();
+
+        return view('recetas.index', compact('recetas', 'categoria'));
     }
 
     public function create()

@@ -8,15 +8,24 @@ use App\Http\Controllers\HomeController;
 // Ruta Principal
 Route::get('/', HomeController::class)->name('home');
 
-// Rutas RecetaController
-Route::controller(RecetaController::class)->group(function () {
-    Route::get('recetas', 'index');
-    Route::get('recetas/create', 'create');
-    Route::get('recetas/{receta}/{categoria?}', 'show');
+// // Rutas RecetaController
+// Route::controller(RecetaController::class)->group(function () {
+//     Route::get('recetas', 'index');
+//     Route::get('recetas/create', 'create');
+//     Route::get('recetas/{receta}/{categoria?}', 'show');
 
-    Route::get('categorias', 'index')->name('categorias.index');
-    Route::get('categorias/create', 'create')->name('categorias.create');
+//     Route::get('categorias', 'index')->name('categorias.index');
+//     Route::get('categorias/create', 'create')->name('categorias.create');
+// });
+
+Route::controller(RecetaController::class)->group(function () {
+    Route::get('categorias/{categoria}/recetas', 'index')->name('recetas.index');
+
+    Route::get('categorias/{categoria}/recetas/create', 'create')->name('recetas.create');    
+    Route::post('categorias/{categoria}/recetas/store', 'store')->name('recetas.store');
+
 });
+
 
 // Rutas CategoriaController
 Route::controller(CategoriaController::class)->group(function () {

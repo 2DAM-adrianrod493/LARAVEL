@@ -32,10 +32,20 @@ class CategoriaController extends Controller
         );
     }
 
+    // Edición
+    public function edit(Categoria $categoria): View {
+        return view('categorias.editCategoria', compact('categoria'));
+    }
+
     // Actualizar Datos
     public function update(Request $request, Categoria $categoria){      
         $categoria->update($request->all());
         return redirect()->route('categorias.index');
     }
 
+    // Borrar Categoría
+    public function delete(Categoria $categoria): View {
+        return view('categorias.deleteCategoria', compact('categoria'));
+    }
+    
 }
