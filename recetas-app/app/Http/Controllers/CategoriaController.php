@@ -32,4 +32,10 @@ class CategoriaController extends Controller
         );
     }
 
+    // Actualizar Datos
+    public function update(Request $request, Categoria $categoria){      
+        $categoria->update($request->all());
+        return redirect()->route('categorias.index');
+    }
+
 }
