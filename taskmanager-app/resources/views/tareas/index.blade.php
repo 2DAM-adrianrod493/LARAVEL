@@ -23,11 +23,6 @@
         </a>
     </div>
 
-    <!-- Mensaje de Éxito -->
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
     <!-- Listado de Tareas -->
     <div class="container mt-5">
         <div class="row">
