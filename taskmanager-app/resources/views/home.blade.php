@@ -4,6 +4,8 @@
 
 @section('contenido')
 
-    <h1>Home</h1>
+    <a href="{{route('proyectos.index')}}" class="btn btn-outline-success">
+        Ver Proyectos
+    </a>
 
 @endsection
