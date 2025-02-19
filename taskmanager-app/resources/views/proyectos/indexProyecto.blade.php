@@ -38,9 +38,13 @@
                             <a href="{{route('proyectos.edit', $proyecto)}}" class="btn w-100 mb-2" style="background-color: #000000; color: white;">
                                 Editar
                             </a>
-                            <a class="btn w-100 mb-2" style="background-color: #000000; color: white;">
-                                Eliminar
-                            </a>
+                            <form action={{route('proyectos.delete', $proyecto)}} method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn w-100 mb-2"
+                                    style="background-color: #000000; color: white;">Eliminar
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

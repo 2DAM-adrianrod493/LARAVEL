@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class ProyectoController extends Controller
 {
@@ -36,13 +37,20 @@ class ProyectoController extends Controller
     // Editar Proyecto
     public function edit(Proyecto $proyecto)
     {
-        return $proyecto;
+        return view('proyectos.editProyecto', compact('proyecto'));
     }
 
     // Actualizar Datos
     public function update(Request $request, Proyecto $proyecto)
     {
         $proyecto->update($request->all());
+        return redirect()->route('proyectos.index');
+    }
+
+    // Eliminar Proyecto
+    public function delete(Request $request, Proyecto $proyecto)
+    {
+        $proyecto->delete($request->all());
         return redirect()->route('proyectos.index');
     }
 }

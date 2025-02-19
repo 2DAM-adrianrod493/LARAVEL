@@ -13,7 +13,7 @@
 </div>
 
 <!-- Formulario -->
-<form class="container mt-2" action={{route('proyectos.update', $proyecto)}} method="post">
+<form class="container mt-2" action="{{ route('proyectos.update', $proyecto)}}" method="post">
     @csrf
     @method('put')
     <div class="mb-3">

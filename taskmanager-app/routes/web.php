@@ -21,6 +21,8 @@ Route::controller(ProyectoController::class)->group(function () {
 
     Route::put('proyectos/{proyecto}', 'update')->name('proyectos.update');
 
+    Route::delete('proyectos/{proyecto}', 'delete')->name('proyectos.delete');
+
 });
 
 // Tareas
