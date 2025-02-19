@@ -15,7 +15,7 @@
 <!-- Botón Nuevo Proyecto -->
 <div class="d-flex justify-content-center bg-opacity-25" style="background-color: #000000; padding: 15px 0;">
     <a href="{{ route('proyectos.create') }}"
-       class="btn btn-outline-success"
+       class="btn mb-2"
        style="background-color: #FFFFFF;
               color: #000000;">
         Nuevo Proyecto
@@ -32,7 +32,7 @@
                         <h5 class="card-title">{{ $proyecto->nombre }}</h5>
                         <p class="card-text">{{ $proyecto->descripcion }}</p>
                         <div class="mt-auto">
-                            <a class="btn w-100 mb-2" style="background-color: #000000; color: white;">
+                            <a href="{{route('tareas.index', $proyecto)}}" class="btn w-100 mb-2" style="background-color: #000000; color: white;">
                                 Ver Tareas
                             </a>
                             <a href="{{route('proyectos.edit', $proyecto)}}" class="btn w-100 mb-2" style="background-color: #000000; color: white;">
@@ -52,5 +52,19 @@
         @endforeach
     </div>
 </div>
+
+<p></p>
+
+@if (session('error'))
+    <div class="alert alert-danger">{{session('error')}}</div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">{{session('success')}}</div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">{{session('success')}}</div>
+@endif
 
 @endsection

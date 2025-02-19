@@ -3,36 +3,86 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tarea;
+use App\Models\Proyecto;
 
 class TareaController extends Controller
 {
-    // Inicio
-    public function index() {
-        return "Inicio";
+    // Mostramos la Lista de Tareas
+    public function index(Proyecto $proyecto)
+    {
+        $tareas = $proyecto->tareas;
+        return view('tareas.index', compact('tareas', 'proyecto'));
     }
 
-    // Listar Tareas
-    public function show($proyecto=null, $tarea) {
-        if ($proyecto != null) {
-            return "Detalles de la tarea $tarea, del proyecto $proyecto";
-        } else {
-            return "Detalles de la tarea $tarea";
-        }
+    // Ver los Detalles de una Tarea
+    public function show(Proyecto $proyecto, Tarea $tarea)
+    {
+        return view('tareas.show', compact('proyecto', 'tarea'));
     }
 
-    // Crear Tareas
-    public function create() {
-        return "Crear Tarea";
+    // Crear Tarea
+    public function create(Proyecto $proyecto)
+    {
+        return view('tareas.create', compact('proyecto'));
     }
 
-    // Crear Tareas
-    public function edit() {
-        return "Editar Tarea";
+    // Guardar los Datos de la Tarea
+    public function store(Request $request, Proyecto $proyecto)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'dificultad' => 'required|string',
+            'estado' => 'required|string|in:completada,en_progreso,pendiente',
+            'duracion' => 'required|integer',
+        ]);
+
+        $proyecto->tareas()->create([
+            'nombre' => $request->nombre,
+            'dificultad' => $request->dificultad,
+            'estado' => $request->estado,
+            'duracion' => $request->duracion,
+            'proyecto_id' => $proyecto->id,
+        ]);
+
+        return redirect()->route('proyectos.tareas.index', $proyecto)
+        ->with('success', 'Tarea Creada con Éxito');
     }
 
-    // Crear Tareas
-    public function delete() {
-        return "Borrar Tarea";
+    // Editar Tarea
+    public function edit(Proyecto $proyecto, Tarea $tarea)
+    {
+        return view('tareas.edit', compact('proyecto', 'tarea'));
+    }
+
+    // Actualizar Datos Tarea
+    public function update(Request $request, Proyecto $proyecto, Tarea $tarea)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'dificultad' => 'required|string',
+            'estado' => 'required|string|in:completada,en_progreso,pendiente',
+            'duracion' => 'required|integer',
+        ]);
+
+        // Actualizar Tarea
+        $tarea->update([
+            'nombre' => $request->nombre,
+            'dificultad' => $request->dificultad,
+            'estado' => $request->estado,
+            'duracion' => $request->duracion,
+        ]);
+
+        return redirect()->route('proyectos.tareas.index', $proyecto)
+        ->with('success', 'Tarea Editada con Éxito');
+    }
+
+    // Borrar Tarea
+    public function delete(Proyecto $proyecto, Tarea $tarea)
+    {
+        $tarea->delete();
+        return redirect()->route('proyectos.tareas.index', $proyecto)
+        ->with('success', 'Tarea Eliminada con Éxito');
     }
 
 }

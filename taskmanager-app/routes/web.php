@@ -28,10 +28,14 @@ Route::controller(ProyectoController::class)->group(function () {
 // Tareas
 Route::controller(TareaController::class)->group(function () {
 
-    Route::get('tareas', 'index');
+    Route::get('proyectos/{proyecto}/tareas', 'index')->name('tareas.index');
 
-    Route::get('tareas/create', 'create');
-    
-    Route::get('tareas/{tarea}/{proyecto?}', 'show');
+    Route::get('proyectos/{proyecto}/tareas/create', 'create')->name('tareas.create');
+
+    Route::post('proyectos/{proyecto}/tareas/store', 'store')->name('tareas.store');
+
+    Route::get('proyectos/{proyecto}/tareas/{tarea}/edit', 'edit')->name('tareas.edit');
+
+    Route::put('proyectos/{proyecto}/tareas/update', 'update')->name('tareas.update');
 
 });

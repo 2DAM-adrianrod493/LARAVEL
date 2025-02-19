@@ -25,13 +25,19 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required',
+            'duracion' => 'required|integer'
+        ]);
+
         Proyecto::create([
             'nombre'=>$request->nombre,
             'descripcion'=>$request->descripcion,
             'duracion'=>$request->duracion
         ]);
 
-        return redirect()->route('proyectos.index')->with('success','Proyecto Creado Exitosamente');
+        return redirect()->route('proyectos.index')->with('success','Creado Exitosamente');
     }
 
     // Editar Proyecto
@@ -43,14 +49,20 @@ class ProyectoController extends Controller
     // Actualizar Datos
     public function update(Request $request, Proyecto $proyecto)
     {
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required',
+            'duracion' => 'required|integer'
+        ]);
+
         $proyecto->update($request->all());
-        return redirect()->route('proyectos.index');
+        return redirect()->route('proyectos.index')->with('success','Editado Correctamente');
     }
 
     // Eliminar Proyecto
     public function delete(Request $request, Proyecto $proyecto)
     {
         $proyecto->delete($request->all());
-        return redirect()->route('proyectos.index');
+        return redirect()->route('proyectos.index')->with('success', 'Eliminado Correctamente');
     }
 }

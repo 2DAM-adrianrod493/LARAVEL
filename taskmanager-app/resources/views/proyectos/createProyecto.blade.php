@@ -31,4 +31,5 @@
     <button type="submit" class="btn" style="background-color: #222222; color: white;">Guardar</button>
     <a href="{{ route('proyectos.index') }}" class="btn" style="background-color: #000000; color: white;">Cancelar</a>
 </form>
+
 @endsection
