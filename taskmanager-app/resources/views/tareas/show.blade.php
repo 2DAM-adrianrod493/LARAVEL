@@ -26,6 +26,13 @@
                 style="background-color: #000000; color: white;">
                 Editar
                 </a>
+
+                <form action="{{route('tareas.delete', [$proyecto, $tarea])}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn w-100 mb-2"
+                    style="background-color: #000000; color: white;">Eliminar</button>
+                </form>
             </div>
         </div>
     </div>

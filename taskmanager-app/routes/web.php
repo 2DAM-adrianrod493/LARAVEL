@@ -38,4 +38,8 @@ Route::controller(TareaController::class)->group(function () {
 
     Route::put('proyectos/{proyecto}/tareas/update', 'update')->name('tareas.update');
 
+    Route::get('proyectos/{proyecto}/tareas/{tarea}', 'show')->name('tareas.show');
+
+    Route::delete('proyectos/{proyecto}/tareas/{tarea}', 'delete')->name('tareas.delete');
+
 });

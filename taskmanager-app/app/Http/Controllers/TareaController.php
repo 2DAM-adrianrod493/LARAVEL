@@ -45,8 +45,8 @@ class TareaController extends Controller
             'proyecto_id' => $proyecto->id,
         ]);
 
-        return redirect()->route('proyectos.tareas.index', $proyecto)
-        ->with('success', 'Tarea Creada con Éxito');
+        return redirect()->route('tareas.index', $proyecto)
+        ->with('success', 'Tarea Creada Correctamente');
     }
 
     // Editar Tarea
@@ -73,16 +73,16 @@ class TareaController extends Controller
             'duracion' => $request->duracion,
         ]);
 
-        return redirect()->route('proyectos.tareas.index', $proyecto)
-        ->with('success', 'Tarea Editada con Éxito');
+        return redirect()->route('tareas.show', [$proyecto. $tarea])
+        ->with('success', 'Tarea Editada Correctamente');
     }
 
     // Borrar Tarea
-    public function delete(Proyecto $proyecto, Tarea $tarea)
+    public function delete(Request $request, Proyecto $proyecto, Tarea $tarea)
     {
-        $tarea->delete();
-        return redirect()->route('proyectos.tareas.index', $proyecto)
-        ->with('success', 'Tarea Eliminada con Éxito');
+        $tarea->delete($request->all());
+        return redirect()->route('tareas.index', compact('proyecto'))
+        ->with('success', 'Tarea Eliminada Correctamente');
     }
 
 }
