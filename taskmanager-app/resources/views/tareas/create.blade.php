@@ -8,7 +8,7 @@
 
 @section('contenido')
 
-<div class="d-flex justify-content-center" style="background-color: #000000; padding: 15px 0;">
+<div class="d-flex justify-content-center" style="background-color: #000000; padding: 15px 0; border-radius: 15px;">
     <h3 class="text-white">Crear Nueva Tarea</h3>
 </div>
 

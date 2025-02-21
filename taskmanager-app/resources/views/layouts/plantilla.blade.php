@@ -32,7 +32,7 @@
             <header class="row py-4 m-0 head align-items-center">
                 <div class="col-6 d-flex align-items-center">
                     <img src="{{ asset('storage/images/logo.png') }}" class="img-fluid logo me-2">
-                    <p class="display-6 m-0">TaskManager</p>
+                    <p class="display-6 m-0" style="font-weight: bold;">TaskManager</p>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
                     <a href="{{ route('home') }}" class="btn mb-2" style="background-color: #000000; color: white;">Home</a>

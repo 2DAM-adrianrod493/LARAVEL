@@ -73,7 +73,7 @@ class TareaController extends Controller
             'duracion' => $request->duracion,
         ]);
 
-        return redirect()->route('tareas.show', [$proyecto. $tarea])
+        return redirect()->route('tareas.show', [$proyecto, $tarea])
         ->with('success', 'Tarea Editada Correctamente');
     }
 

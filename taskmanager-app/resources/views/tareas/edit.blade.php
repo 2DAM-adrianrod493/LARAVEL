@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-<div class="d-flex justify-content-center" style="background-color: #000000; padding: 15px 0;">
+<div class="d-flex justify-content-center" style="background-color: #000000; padding: 15px 0; border-radius: 15px;">
     <h3 class="text-white">Tarea {{$tarea->nombre}}</h3>
 </div>
 
@@ -31,9 +31,12 @@
         name="dificultad">{{$tarea->dificultad}}</textarea>
     </div>
     <div class="mb-3">
-        <label for="controlInputDescp" class="form-label">Estado</label>
-        <textarea class="form-control" id="controlInputDescp" rows="3"
-        name="estado">{{$tarea->estado}}</textarea>
+        <label for="controlInputEstado" class="form-label">Estado</label>
+        <select class="form-control" id="controlInputEstado" name="estado">
+            <option value="pendiente">Pendiente</option>
+            <option value="en_progreso">En progreso</option>
+            <option value="completada">Completada</option>
+        </select>
     </div>
 
     <div class="mb-3">
@@ -43,7 +46,7 @@
     </div>
     
     <button type="submit" class="btn" style="background-color: #222222; color: white;">Guardar</button>
-    <a href="{{ route('tareas.index', ['proyecto' => $proyecto->id]) }}"
+    <a href="{{ route('tareas.index', $proyecto) }}"
         class="btn" style="background-color: #000000; color: white;">Cancelar</a>
 
 </form>

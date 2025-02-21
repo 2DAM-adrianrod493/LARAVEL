@@ -8,25 +8,32 @@
 
 @section('contenido')
 
-    <div class="d-flex justify-content-center" style="background-color: #000000; padding: 15px 0;">
-        <h3 class="text-white">Listado de Tareas</h3>
-    </div>
-    
-    <!-- Botón Nueva Tarea -->
-    <div class="d-flex justify-content-center bg-opacity-25" style="background-color: #000000; padding: 15px 0;">
-        <a href="{{ route('tareas.create', $proyecto) }}"
-           class="btn mb-2"
-           style="background-color: #FFFFFF;
-                  color: #000000;">
-            Nueva Tarea
-        </a>
+    <div class="d-flex flex-column justify-content-center align-items-center" 
+        style="background-color: #000000; padding: 15px 0; border-radius: 15px;">
+        <!-- Título -->
+        <h3 class="text-white mb-3">Listado de Tareas</h3>
+
+        <div class="d-flex gap-3 mb-2">
+            <!-- Botón Nueva Tarea -->
+            <a href="{{ route('tareas.create', $proyecto) }}"
+            class="btn mb-2"
+            style="background-color: #FFFFFF; color: #000000; border-radius: 15px;">
+                Nueva Tarea
+            </a>
+                <!-- Botón Nueva Tarea -->
+                <a href="{{ route('proyectos.index', $proyecto) }}"
+                class="btn mb-2"
+                style="background-color: #FFFFFF; color: #000000; border-radius: 15px;">
+                Volver Atrás
+            </a>
+        </div>
     </div>
     
     <!-- Lista Tareas -->
     <div class="container mt-5">
         <div class="row">
             @foreach ($tareas as $tarea)
-                <div class="col-4">
+                <div class="col-4  mb-4">
                     <div class="card">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $tarea->nombre }}</h5>
@@ -34,13 +41,13 @@
                             <div class="mt-auto">
                                 <a href="{{route('tareas.show', [$proyecto, $tarea])}}"
                                     class="btn w-100 mb-2"
-                                    style="background-color: #000000; color: white;">
+                                    style="background-color: #666666; color: white;">
                                     Ver Tarea
                                 </a>
                                 
                                 <a href="{{route('tareas.edit', [$proyecto, $tarea])}}"
                                 class="btn w-100 mb-2"
-                                style="background-color: #000000; color: white;">
+                                style="background-color: #333333; color: white;">
                                 Editar
                                 </a>
                 

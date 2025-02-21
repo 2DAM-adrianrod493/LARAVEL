@@ -8,8 +8,17 @@
 
 @section('contenido')
 
-    <div class="d-flex justify-content-center" style="background-color: #000000; padding: 15px 0;">
-        <h3 class="text-white">Tarea {{$tarea->nombre}}</h3>
+    <div class="d-flex flex-column justify-content-center align-items-center" 
+        style="background-color: #000000; padding: 15px 0; border-radius: 15px;">
+        <!-- Título -->
+        <h3 class="text-white mb-3">Tarea {{$tarea->nombre}}</h3>
+
+        <!-- Botón Nueva Tarea -->
+        <a href="{{ route('tareas.index', $proyecto) }}"
+        class="btn mb-2"
+        style="background-color: #FFFFFF; color: #000000; border-radius: 15px;">
+            Volver Atrás
+        </a>
     </div>
 
     <div class="container mt-5">

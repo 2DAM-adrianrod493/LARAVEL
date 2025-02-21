@@ -4,8 +4,15 @@
 
 @section('contenido')
 
-    <a href="{{route('proyectos.index')}}" class="btn w-100 mb-2" style="background-color: #000000; color: white;" >
+    <div class="d-flex flex-column justify-content-center align-items-center" 
+    style="background-color: #000000; padding: 15px 0; border-radius: 15px; height: 120px">
+
+    <!-- Botón Nuevo Proyecto -->
+    <a href="{{ route('proyectos.index') }}"
+    class="btn mb-2"
+    style="background-color: #FFFFFF; color: #000000; border-radius: 15px;">
         Ver Proyectos
     </a>
+</div>
 
 @endsection

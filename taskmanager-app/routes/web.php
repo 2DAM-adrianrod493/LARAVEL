@@ -36,7 +36,7 @@ Route::controller(TareaController::class)->group(function () {
 
     Route::get('proyectos/{proyecto}/tareas/{tarea}/edit', 'edit')->name('tareas.edit');
 
-    Route::put('proyectos/{proyecto}/tareas/update', 'update')->name('tareas.update');
+    Route::put('proyectos/{proyecto}/tareas/{tarea}', 'update')->name('tareas.update');
 
     Route::get('proyectos/{proyecto}/tareas/{tarea}', 'show')->name('tareas.show');
 
