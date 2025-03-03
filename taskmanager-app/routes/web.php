@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\SeguimientoController;
 
 // Ruta Principal
 Route::get('/', HomeController::class)->name('home');
@@ -41,5 +42,20 @@ Route::controller(TareaController::class)->group(function () {
     Route::get('proyectos/{proyecto}/tareas/{tarea}', 'show')->name('tareas.show');
 
     Route::delete('proyectos/{proyecto}/tareas/{tarea}', 'delete')->name('tareas.delete');
+
+});
+
+// Seguimientos
+Route::controller(SeguimientoController::class)->group(function () {
+
+    Route::get('proyectos/{proyecto}/tareas/{tarea}/seguimientos', 'index')->name('seguimientos.index');
+
+    Route::get('proyectos/{proyecto}/tareas/{tarea}/seguimientos/create', 'create')->name('seguimientos.create');
+
+    Route::post('proyectos/{proyecto}/tareas/{tarea}/seguimientos/store', 'store')->name('seguimientos.store');
+
+    Route::get('proyectos/{proyecto}/tareas/{tarea}/seguimientos/{seguimiento}', 'show')->name('seguimientos.show');
+
+    Route::delete('proyectos/{proyecto}/tareas/{tarea}/seguimientos/{seguimiento}', 'delete')->name('seguimientos.delete');
 
 });

@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Tareas')
+@section('title', 'Tareas' . $tarea)
 
 @section('buttonBack', route('home'))
 
@@ -29,6 +29,12 @@
                 <p><strong>Estado:</strong> {{$tarea->estado}}</p>
                 <p><strong>Dificultad:</strong> {{$tarea->dificultad}}</p>
                 <p><strong>Duración:</strong> {{$tarea->duracion}}</p>
+
+                <a href="{{route('seguimientos.index', [$proyecto, $tarea])}}"
+                class="btn w-100 mb-2"
+                style="background-color: #000000; color: white;">
+                Detalles
+                </a>
 
                 <a href="{{route('tareas.edit', [$proyecto, $tarea])}}"
                 class="btn w-100 mb-2"

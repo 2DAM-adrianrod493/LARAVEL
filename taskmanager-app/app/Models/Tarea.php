@@ -11,8 +11,13 @@ class Tarea extends Model
 
     protected $fillable = ['nombre', 'dificultad', 'estado', 'duracion', 'proyecto_id'];
 
-    public function proyecto()
+    public function proyectos()
     {
         return $this->belongsTo(Proyecto::class);
+    }
+
+    public function seguimientos()
+    {
+        return $this->hasMany(Seguimiento::class);
     }
 }

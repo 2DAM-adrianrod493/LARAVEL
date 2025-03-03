@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tarea;
 use App\Models\Proyecto;
+use App\Models\Seguimiento;
 
 class TareaController extends Controller
 {
