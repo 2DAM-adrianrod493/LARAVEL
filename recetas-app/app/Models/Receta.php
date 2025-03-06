@@ -19,8 +19,8 @@ class Receta extends Model
         'categoria_id'
     ];
 
-    // Para indicar que la receta pertenece a una categoría
-    public function categoria(): BelongsTo{
-        return $this->belognsTo(Categoria::class);
+    public function categoria(): BelongsTo
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }

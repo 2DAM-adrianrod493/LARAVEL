@@ -19,17 +19,11 @@ return new class extends Migration
             $table->integer('tiempo_cocinado')->nullable();
             $table->string('dificultad')->default('Fácil');       
            
-            //Definimos el campo de la categoria_id
             $table->unsignedBigInteger('categoria_id');  
             $table->timestamps();
-            //Indicamos que dicho campo es una foreign key
             $table->foreign('categoria_id')->references('id')->on('categorias')->cascadeOnDelete();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('recetas');
